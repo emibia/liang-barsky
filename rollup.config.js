@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import eslint from 'rollup-plugin-eslint';
+// import eslint from 'rollup-plugin-eslint';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
@@ -10,6 +10,7 @@ export default {
   dest: 'liang-barsky.min.js',
   format: 'iife',
   sourceMap: 'inline',
+  moduleName: 'window',
   plugins: [
     resolve({
       jsnext: true,
@@ -17,9 +18,12 @@ export default {
       browser: true,
     }),
     commonjs(),
-    eslint({
-      exclude: [],
-    }),
+    // eslint({
+    //   exclude: [
+    //     'glpk.min.js',
+    //     'lalolib.js'
+    //     ],
+    // }),
     babel({
       exclude: 'node_modules/**',
     }),

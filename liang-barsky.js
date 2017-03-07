@@ -27,6 +27,8 @@ LiangBarsky.prototype = {
       pRight  = deltaX,  qRight  = this.xMax - this.pStart.x,
       pBottom = -deltaY, qBottom = this.pStart.y - this.yMin,
       pTop    = deltaY,  qTop    = this.yMax - this.pStart.y;
+      // pTop = -deltaY, qTop = this.pStart.y - this.yMin,
+      // pBottom    = deltaY,  qBottom    = this.yMax - this.pStart.y;
 
   var uLeft  = qLeft/pLeft,
     uRight  = qRight/pRight,
@@ -37,9 +39,13 @@ LiangBarsky.prototype = {
   p.push(pLeft);p.push(pRight);p.push(pBottom);p.push(pTop);
   q.push(qLeft);q.push(qRight);q.push(qBottom);q.push(qTop);
 
+  var x1 = this.pStart.x, y1 = this.pStart.y,
+      x2 = this.pEnd.x , y2 = this.pEnd.y;
+
   for (var i = 0; i < 4; i++) {
     if (p[i] == 0) {
       console.debug("line is parallel to one of the clipping boundary");
+      // if q[i] >= 0 the line is inside the clipping boundary
       if (q[i] >= 0) {
         // vertical
         if (i < 2) {
@@ -81,7 +87,7 @@ LiangBarsky.prototype = {
 
   for (var i = 0; i < 4; i++) {
     var temp = q[i] / p[i];
-
+    console.log(temp);
     if (p[i] < 0) {
       if (t1 <= temp)
         t1 = temp;

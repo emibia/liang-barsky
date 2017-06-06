@@ -1,2 +1,2 @@
 # liang-barsky.js
-Ling-Barsky clipping implementaion in JavaScript
+Liang-Barsky clipping implementaion in JavaScript
